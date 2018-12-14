@@ -3,7 +3,7 @@ class Main{
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		System.out.println("\n\t\t\t======== Matrix Multiplication ========");
+		System.out.println("\n\t\t\t======== Scalar_Matrix Multiplication ========");
 		System.out.println("Matrix rows : ");
 		int rows = in.nextInt();
 		System.out.println("Matrix Columns : ");
