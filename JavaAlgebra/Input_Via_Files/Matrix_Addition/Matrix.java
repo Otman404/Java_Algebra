@@ -43,12 +43,17 @@ class Matrix{
 	}
 	//Matrix getter/setter
 	public int [][] getMat(){return this.mat;}
-	public void setMat(){
-		Scanner in = new Scanner(System.in);
+	public void setMat(String name){
+		Scanner in = new Scanner(new File(name));
+		this.c = in.nextLine().replaceAll("\\s","").length();
+		List<String> elems = new ArrayList<String>();
+		while(in.hasNext()){
+			c.add(in.next());
+		}
+		this.r = elems.size()/this.c;
 		for (int i = 0;i<this.r ;i++ ) {
 			for (int j = 0;j<this.c ;j++ ) {
-				System.out.print("["+i+"]["+j+"] = ");
-				mat[i][j] = in.nextInt();
+				mat[i][j] = Integer.parseInt(in.next());
 				System.out.println();
 			}
 		}

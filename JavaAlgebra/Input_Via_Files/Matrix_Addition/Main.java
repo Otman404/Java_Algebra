@@ -4,33 +4,20 @@ import java.File.*;
 class Main{
 
 	public static void main(String[] args) throws FileNotFoundException {
-		Scanner in1 = new Scanner(new File("matrix1.txt"));
-		Scanner in2 = new Scanner(new File("matrix2.txt"));
-		int columns1 = in.nextLine().replaceAll("\\s","").length();
-		int columns2 = in.nextLine().replaceAll("\\s","").length();
-		System.out.println("\n\t\t\t======== Matrix Addition ========");
-		List<String> c = new ArrayList<String>();
-		while(in1.hasNext()){
-			c.add(in1.next());
-		}
-		int rows1 = c.size()/columns1;
-		Matrix m1 = new Matrix(rows1,columns1);
-		List<String> c = new ArrayList<String>();
-		while(in2.hasNext()){
-			c.add(in2.next());
-		}
-		int rows2 = c.size()/columns2;
 
-		int size1 = columns1*rows1;
-		int size2 = columns2*rows2;
+		System.out.println("\n\t\t\t======== Matrix Addition ========");
+
+
 		if(size1 != size2){
 			System.out.println("The number of columns in the first matrix should be equal to the number of rows in the second.");
 			return;
 		}
 		Matrix m2 = new Matrix(rows2,columns2);
 		Matrix result = new Matrix(rows1,columns1);
-		m1.setMat(); //Redefine setMat()
-		m2.setMat(); //Redefine setMat()
+		m1.setMat("matrix1.txt");
+		m2.setMat("matrix2.txt");
+		int size1 = m1.getColumns()*m1.getRows();
+		int size2 = m2.getColumns()*m2.getRows();
 		System.out.println("Matrix 1");
 		m1.Display();
 		System.out.println("Matrix 2");
