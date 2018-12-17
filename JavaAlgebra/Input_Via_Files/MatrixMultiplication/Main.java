@@ -4,33 +4,27 @@ class Main{
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
 		System.out.println("\n\t\t\t======== Matrix Multiplication ========");
-		System.out.println("Matrix 1 rows : ");
-		int rows1 = in.nextInt();
-		System.out.println("Matrix 1 Columns : ");
-		int columns1 = in.nextInt();
-		Matrix m1 = new Matrix(rows1,columns1);
-		System.out.println("Matrix 2 rows : ");
-		int rows2 = in.nextInt();
-		System.out.println("Matrix 2 Columns : ");
-		int columns2 = in.nextInt();
-		if(columns1 != rows2){
+		
+		Matrix m1 = new Matrix("matrix1.txt");
+		Matrix m2 = new Matrix("matrix1.txt");
+
+		if(m1.getColumns() != m2.getRows()){
 			System.out.println("The number of columns in the first matrix should be equal to the number of rows in the second.");
 			return;
 		}
-		Matrix m2 = new Matrix(rows2,columns2);
-		Matrix result = new Matrix(rows1,columns2);
+		Matrix result = new Matrix(m1.getRows(),m2.getColumns());
 		m1.setMat();
 		m2.setMat();
 		System.out.println("Matrix 1");
 		m1.Display();
 		System.out.println("Matrix 2");
 		m2.Display();
-		int nbrOfCells = rows1*columns2;
+		int nbrOfCells = m1.getRows()*m2.getColumns();
 		Thread[] threads = new Thread[nbrOfCells];
 		int k = 0;
 		try{
-			for (int i = 0 ;i<rows1;i++ ){
-				for (int j = 0;j<columns2 ;j++ ) {
+			for (int i = 0 ;i<m1.getRows();i++ ){
+				for (int j = 0;j<m2.getColumns() ;j++ ) {
 					threads[k] = new Thread(new MatrixMultiplication(m1,m2,result,i,j));
 					threads[k].start();
 					threads[k].join();
