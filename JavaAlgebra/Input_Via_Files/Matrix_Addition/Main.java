@@ -1,23 +1,22 @@
 import java.util.*;
-import java.File.*;
+import java.io.*;
 
 class Main{
 
 	public static void main(String[] args) throws FileNotFoundException {
 
 		System.out.println("\n\t\t\t======== Matrix Addition ========");
-
-
+		Matrix m1 = new Matrix("matrix1.txt");
+		Matrix m2 = new Matrix("matrix2.txt");
+		m1.setMat();
+		m2.setMat();
+		Matrix result = new Matrix(m1.getRows(),m1.getColumns());
+		int size1 = m1.getColumns()*m1.getRows();
+		int size2 = m2.getColumns()*m2.getRows();
 		if(size1 != size2){
 			System.out.println("The number of columns in the first matrix should be equal to the number of rows in the second.");
 			return;
 		}
-		Matrix m2 = new Matrix(rows2,columns2);
-		Matrix result = new Matrix(rows1,columns1);
-		m1.setMat("matrix1.txt");
-		m2.setMat("matrix2.txt");
-		int size1 = m1.getColumns()*m1.getRows();
-		int size2 = m2.getColumns()*m2.getRows();
 		System.out.println("Matrix 1");
 		m1.Display();
 		System.out.println("Matrix 2");
@@ -25,8 +24,8 @@ class Main{
 		Thread[] threads = new Thread[size1];
 		int k = 0;
 		try{
-			for (int i = 0 ;i<rows1;i++ ){
-				for (int j = 0;j<columns2 ;j++ ) {
+			for (int i = 0 ;i<m1.getRows();i++ ){
+				for (int j = 0;j<m2.getColumns() ;j++ ) {
 					threads[k] = new Thread(new MatrixAddition(m1,m2,result,i,j));
 					threads[k].start();
 					threads[k].join();
