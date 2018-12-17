@@ -5,7 +5,7 @@ class Main{
 
 	public static void main(String[] args) throws FileNotFoundException {
 
-		System.out.println("\n\t\t\t======== Matrix Addition ========");
+		System.out.println("\n\t\t\t======== Matrix Substraction ========");
 		Matrix m1 = new Matrix("matrix1.txt");
 		Matrix m2 = new Matrix("matrix2.txt");
 		m1.setMat();
