@@ -4,20 +4,19 @@ class Main{
 	public static void main(String[] args){
 		Scanner in = new Scanner(System.in);
 		System.out.println("\n\t\t\t======== Matrix Transpose ========");
-		System.out.println("Matrix rows : ");
-		int rows = in.nextInt();
-		System.out.println("Matrix Columns : ");
-		int columns = in.nextInt();
-		Matrix m = new Matrix(rows,columns);
-		Matrix mt = new Matrix(columns,rows);
+		
+		Matrix m = new Matrix("matrix.txt");
+
+
+		Matrix mt = new Matrix(m.getColumns(),m.getRows());
 		m.setMat();
 		m.Display();
-		int size = columns * rows;
+		int size = m.getColumns() * m.getRows();
 		Thread[] threads = new Thread[size];
 		int k = 0;
 		try{
-			for (int i = 0 ;i<rows;i++ ){
-				for (int j = 0;j<columns ;j++ ) {
+			for (int i = 0 ;i<m.getRows();i++ ){
+				for (int j = 0;j<m.getColumns() ;j++ ) {
 					threads[k] = new Thread(new Transpose(m,mt,i,j));
 					threads[k].start();
 					threads[k].join();
