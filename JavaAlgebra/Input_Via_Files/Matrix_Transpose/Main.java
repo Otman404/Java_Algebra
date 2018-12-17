@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Main{
+class Main{ 
 	public static void main(String[] args){
 		Scanner in = new Scanner(System.in);
 		System.out.println("\n\t\t\t======== Matrix Transpose ========");
