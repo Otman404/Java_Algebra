@@ -10,21 +10,12 @@ class Main{
 		int columns = in.nextInt();
 		Matrix m = new Matrix(rows,columns);
 		Matrix mt = new Matrix(columns,rows);
+		System.out.println("Setting the matrix : ");
 		m.setMat();
 		m.Display();
 		int size = columns * rows;
-		Thread[] threads = new Thread[size];
-		int k = 0;
-		try{
-			for (int i = 0 ;i<rows;i++ ){
-				for (int j = 0;j<columns ;j++ ) {
-					threads[k] = new Thread(new Transpose(m,mt,i,j));
-					threads[k].start();
-					threads[k].join();
-					k++;
-				}
-			}
-		}catch(Exception e){}
+		ThreadHandler th = new ThreadHandler(rows,columns,size);
+		th.Start(m,mt);
 		System.out.println("Matrix Transpose : ");
 		mt.Display();
 	}
