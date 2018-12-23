@@ -19,28 +19,17 @@ class Main{
 		}
 		Matrix m2 = new Matrix(rows2,columns2);
 		Matrix result = new Matrix(rows1,columns2);
+		System.out.println("Setting Matrix 1 : ");
 		m1.setMat();
+		System.out.println("Setting Matrix 2 : ");
 		m2.setMat();
 		System.out.println("Matrix 1");
 		m1.Display();
 		System.out.println("Matrix 2");
 		m2.Display();
 		int nbrOfCells = rows1*columns2;
-		Thread[] threads = new Thread[nbrOfCells];
-		int k = 0;
-		try{
-			for (int i = 0 ;i<rows1;i++ ){
-				for (int j = 0;j<columns2 ;j++ ) {
-					threads[k] = new Thread(new MatrixMultiplication(m1,m2,result,i,j));
-					threads[k].start();
-					threads[k].join();
-					k++;
-				}
-			}
-		}catch(Exception e){}
-
-		
-
+		ThreadHandler th = new ThreadHandler(rows1,columns2,nbrOfCells);
+		th.Start(m1,m2,result);
 		System.out.println("Result : ");
 		result.Display();
 	}
