@@ -20,20 +20,8 @@ class Main{
 		System.out.println("Matrix 2");
 		m2.Display();
 		int nbrOfCells = m1.getRows()*m2.getColumns();
-		Thread[] threads = new Thread[nbrOfCells];
-		int k = 0;
-		try{
-			for (int i = 0 ;i<m1.getRows();i++ ){
-				for (int j = 0;j<m2.getColumns() ;j++ ) {
-					threads[k] = new Thread(new MatrixMultiplication(m1,m2,result,i,j));
-					threads[k].start();
-					threads[k].join();
-					k++;
-				}
-			}
-		}catch(Exception e){}
-
-		
+		ThreadHandler th = new ThreadHandler(m1.getRows(),m2.getColumns(),nbrOfCells);
+		th.Start(m1,m2,result);
 
 		System.out.println("Result : ");
 		result.Display();

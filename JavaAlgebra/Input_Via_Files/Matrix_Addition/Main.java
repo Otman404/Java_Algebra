@@ -21,18 +21,8 @@ class Main{
 		m1.Display();
 		System.out.println("Matrix 2");
 		m2.Display();
-		Thread[] threads = new Thread[size1];
-		int k = 0;
-		try{
-			for (int i = 0 ;i<m1.getRows();i++ ){
-				for (int j = 0;j<m2.getColumns() ;j++ ) {
-					threads[k] = new Thread(new MatrixAddition(m1,m2,result,i,j));
-					threads[k].start();
-					threads[k].join();
-					k++;
-				}
-			}
-		}catch(Exception e){}
+		ThreadHandler th = new ThreadHandler(m1.getRows(),m2.getRows(),size1);
+		th.Start(m1,m2,result);
 
 		System.out.println("Result : ");
 		result.Display();

@@ -14,18 +14,8 @@ class Main{
 		System.out.println("Matrix : ");
 		m.Display();
 		int size = m.getRows()*m.getColumns();
-		Thread[] threads = new Thread[size];
-		int k = 0;
-		try{
-			for (int i = 0 ;i<m.getRows();i++ ){
-				for (int j = 0;j<m.getColumns() ;j++ ) {
-					threads[k] = new Thread(new ScalarByMatrix(m,scalar,result,i,j));
-					threads[k].start();
-					threads[k].join();
-					k++;
-				}
-			}
-		}catch(Exception e){}		
+		ThreadHandler th = new ThreadHandler(m.getRows(),m.getColumns(),size);		
+		th.Start(m,scalar,result);		
 
 		System.out.println("Result : ");
 		result.Display();

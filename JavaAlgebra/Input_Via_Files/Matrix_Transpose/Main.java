@@ -12,18 +12,8 @@ class Main{
 		m.setMat();
 		m.Display();
 		int size = m.getColumns() * m.getRows();
-		Thread[] threads = new Thread[size];
-		int k = 0;
-		try{
-			for (int i = 0 ;i<m.getRows();i++ ){
-				for (int j = 0;j<m.getColumns() ;j++ ) {
-					threads[k] = new Thread(new Transpose(m,mt,i,j));
-					threads[k].start();
-					threads[k].join();
-					k++;
-				}
-			}
-		}catch(Exception e){}
+		ThreadHandler th = new ThreadHandler(m.getRows(),m.getColumns(),size);
+		th.Start(m,mt);
 		System.out.println("Matrix Transpose : ");
 		mt.Display();
 	}
