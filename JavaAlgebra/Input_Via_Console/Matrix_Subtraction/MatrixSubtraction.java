@@ -1,4 +1,4 @@
-class MatrixSubstraction implements Runnable
+class MatrixSubtraction implements Runnable
 {
   private Matrix m1;
   private Matrix m2;
@@ -6,7 +6,7 @@ class MatrixSubstraction implements Runnable
   private int i;
   private int j;
   
-  public MatrixSubstraction(Matrix m1, Matrix m2, Matrix result, int i, int j) {
+  public MatrixSubtraction(Matrix m1, Matrix m2, Matrix result, int i, int j) {
     this.m1 = m1;
     this.m2 = m2;
     this.result = result;
