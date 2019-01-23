@@ -19,7 +19,7 @@ To get this repository in your machine you can download the zip file or open a t
 ```
 git clone https://github.com/Otman404/Java_Algebra.git
 ```
-you to have git installed to be able to execute that command
+you need to have git installed to be able to execute that command
 
 ### Prerequisites
 
